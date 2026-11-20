@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#5b1020">
+  <title>Administration | Texas Southern University</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="admin.js" defer></script>
+</head>
+<body class="admin-body">
+
+  <header class="admin-header">
+    <a href="index.html#home" class="admin-brand">
+      <img src="tsu-logo.png" alt="Texas Southern University logo">
+      <strong>Texas Southern University</strong>
+    </a>
+    <a href="index.html#home" class="admin-back">← Return to University Website</a>
+  </header>
+
+  <!-- SIGN-IN -->
+  <main>
+    <section class="admin-login-wrap" id="loginSection">
+      <div class="admin-login">
+        <img src="tsu-logo.png" alt="TSU Logo" class="admin-login-logo">
+
+        <h1>Sign in</h1>
+        <p>University Administration Portal</p>
+
+        <form id="loginForm">
+          <div class="admin-field">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter your username"
+              autocomplete="username"
+              required
+            >
+          </div>
+
+          <div class="admin-field">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            >
+          </div>
+
+          <button type="submit" class="admin-submit">Sign in</button>
+          <div class="login-error" id="loginError" role="alert"></div>
+        </form>
+
+        <div class="login-help">
+          Authorized university administration personnel only.
+          This demonstration portal uses browser-based authentication.
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section class="admin-dashboard" id="dashboardSection">
+      <div class="dashboard-heading">
+        <div>
+          <div class="eyebrow">University Administration</div>
+          <h1>Dashboard</h1>
+          <p>Manage university announcements and news publications.</p>
+        </div>
+        <button class="logout-button" id="logoutButton" type="button">Sign out</button>
+      </div>
+
+      <div class="admin-stats">
+        <div class="admin-stat-card">
+          <span>Total Publications</span>
+          <strong id="totalPosts">0</strong>
+        </div>
+        <div class="admin-stat-card">
+          <span>Announcements</span>
+          <strong id="announcementCount">0</strong>
+        </div>
+        <div class="admin-stat-card">
+          <span>News Articles</span>
+          <strong id="newsCount">0</strong>
+        </div>
+      </div>
+
+      <div class="admin-content-grid">
+        <!-- CREATE PUBLICATION -->
+        <section class="admin-panel">
+          <h2>Create a Publication</h2>
+
+          <form id="postForm">
+            <div class="admin-field">
+              <label for="postType">Publication Type</label>
+              <select id="postType" required>
+                <option value="Announcement">Announcement</option>
+                <option value="News">News Article</option>
+              </select>
+            </div>
+
+            <div class="admin-field">
+              <label for="postTitle">Publication Title</label>
+              <input
+                type="text"
+                id="postTitle"
+                placeholder="Enter publication title"
+                maxlength="120"
+                required
+              >
+            </div>
+
+            <div class="admin-field">
+              <label for="postCategory">Category</label>
+              <input
+                type="text"
+                id="postCategory"
+                placeholder="e.g. University, Admissions, Athletics"
+                maxlength="50"
+              >
+            </div>
+
+            <div class="admin-field">
+              <label for="postAuthor">Author / Office</label>
+              <input
+                type="text"
+                id="postAuthor"
+                placeholder="e.g. Office of the President"
+                maxlength="80"
+              >
+            </div>
+
+            <div class="admin-field">
+              <label for="postContent">Publication Content</label>
+              <textarea
+                id="postContent"
+                placeholder="Write the announcement or news article..."
+                maxlength="5000"
+                required
+              ></textarea>
+            </div>
+
+            <label class="admin-checkbox">
+              <input type="checkbox" id="postPinned">
+              Feature this publication on the homepage
+            </label>
+
+            <button type="submit" class="admin-submit">Publish to Website</button>
+            <div class="publish-message" id="publishMessage" role="status"></div>
+          </form>
+        </section>
+
+        <!-- MANAGE PUBLICATIONS -->
+        <section class="admin-panel">
+          <h2>Published Content</h2>
+
+          <select id="filterType" class="admin-filter" aria-label="Filter publications">
+            <option value="All">All Publications</option>
+            <option value="Announcement">Announcements</option>
+            <option value="News">News Articles</option>
+          </select>
+
+          <div class="admin-post-list" id="adminPostList">
+            <div class="empty-state">No publications have been created.</div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
